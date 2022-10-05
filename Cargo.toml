@@ -1,0 +1,14 @@
+[workspace]
+members = [
+    "node",
+    "pallets/sortition-sum-game",
+    "traits/sortition-sum-game-link",
+    "traits/schelling-game-shared-link",
+    "pallets/election",
+    "pallets/project-submission",
+    "pallets/schelling-game-shared",
+    "pallets/profile-validation",
+    "runtime",
+]
+[profile.release]
+panic = "unwind"

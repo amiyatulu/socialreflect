@@ -15,15 +15,9 @@ mod tests;
 mod benchmarking;
 
 mod extras;
-mod types;
 
-use frame_support::sp_std::{prelude::*};
+// use frame_support::sp_std::{prelude::*};
 // use scale_info::prelude::format;
-use types::Post;
-
-pub type PostId = u64;
-pub const FIRST_POST_ID: u64 = 1;
-type AccountIdOf<T> = <T as frame_system::Config>::AccountId;
 
 #[frame_support::pallet]
 pub mod pallet {
@@ -40,7 +34,6 @@ pub mod pallet {
 
 	#[pallet::pallet]
 	#[pallet::generate_store(pub(super) trait Store)]
-	#[pallet::without_storage_info]
 	pub struct Pallet<T>(_);
 
 	// The pallet's runtime storage items.
@@ -50,36 +43,6 @@ pub mod pallet {
 	// Learn more about declaring storage items:
 	// https://docs.substrate.io/v3/runtime/storage#declaring-storage-items
 	pub type Something<T> = StorageValue<_, u32>;
-
-	#[pallet::type_value]
-    pub fn DefaultForNextPostId() -> PostId {
-        FIRST_POST_ID
-    }
-
-    /// The next post id.
-    #[pallet::storage]
-    #[pallet::getter(fn next_post_id)]
-    pub type NextPostId<T: Config> = StorageValue<_, PostId, ValueQuery, DefaultForNextPostId>;
-
-    /// Get the details of a post by its' id.
-    #[pallet::storage]
-    #[pallet::getter(fn post_by_id)]
-    pub type PostById<T: Config> = StorageMap<_, Twox64Concat, PostId, Post<T>>;
-
-    /// Get the ids of all direct replies by their parent's post id.
-    #[pallet::storage]
-    #[pallet::getter(fn reply_ids_by_post_id)]
-    pub type ReplyIdsByPostId<T: Config> =
-        StorageMap<_, Twox64Concat, PostId, Vec<PostId>, ValueQuery>;
-
-	
-	/// Get the ids of all posts that have shared a given original post id.
-    #[pallet::storage]
-    #[pallet::getter(fn shared_post_ids_by_original_post_id)]
-    pub type SharedPostIdsByOriginalPostId<T: Config> =
-        StorageMap<_, Twox64Concat, PostId, Vec<PostId>, ValueQuery>;
-
-
 
 
 	
@@ -91,14 +54,6 @@ pub mod pallet {
 		/// Event documentation should end with an array that provides descriptive names for event
 		/// parameters. [something, who]
 		SomethingStored(u32, T::AccountId),
-		PostCreated {
-            account: T::AccountId,
-            post_id: PostId,
-        },
-        PostUpdated {
-            account: T::AccountId,
-            post_id: PostId,
-        },
 	}
 
 	// Errors inform users that something went wrong.
@@ -150,19 +105,6 @@ pub mod pallet {
 					Ok(())
 				},
 			}
-		}
-
-		#[pallet::weight(10_000)]
-		pub fn create_post(
-			origin: OriginFor<T>,
-			content: Vec<u8>,
-		) -> DispatchResult {
-			let creator = ensure_signed(origin)?;
-			let new_post_id = Self::next_post_id();
-
-			let new_post: Post<T> = Post::new(new_post_id, creator.clone(), content.clone());
-			Ok(())
-
 		}
 	}
 }

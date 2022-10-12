@@ -9,6 +9,8 @@ members = [
     "pallets/schelling-game-shared",
     "pallets/profile-validation",
     "pallets/posts",
+    "pallets/spaces",
+    "pallets/support",
     "runtime",
 ]
 [profile.release]

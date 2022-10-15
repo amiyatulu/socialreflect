@@ -98,31 +98,7 @@ Start the development chain with detailed logging:
 RUST_BACKTRACE=1 ./target/release/node-template -ldebug --dev
 ```
 
-### Connect with Polkadot-JS Apps Front-end
 
-The front end repository: https://github.com/amiyatulu/shivarthu_frontend
-
-```bash
-cd shivarthu_frontend
-yarn install
-```
-
-You can start the template in development mode to connect to a locally running node
-
-```bash
-yarn start
-```
-
-You can also build the app in production mode,
-
-```bash
-yarn build
-```
-
-and open `build/index.html` in your favorite browser.
-
-### Tutorial
-https://github.com/amiyatulu/shivarthu_frontend/blob/main/docs/Tutorial.md
 
 
 ### Multi-Node Local Testnet

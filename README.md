@@ -57,11 +57,7 @@ To view in the python server, go to target folder
 cd target/doc
 python3 -m http.server
 ```
-View the docs at:  
-http://localhost:8000/election/  
 
-Schelling game shared docs:
-http://localhost:8000/schelling_game_shared/pallet/struct.Pallet.html
 
 ### Embedded Docs
 

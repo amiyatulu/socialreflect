@@ -1,3 +1,5 @@
+use sp_runtime::DispatchError;
+
 use crate::*;
 
 impl<T: Config> Post<T> {
@@ -6,4 +8,10 @@ impl<T: Config> Post<T> {
 	}
 }
 
-impl<T: Config> Pallet<T> {}
+impl<T: Config> Pallet<T> {
+
+	    /// Get `Post` by id from the storage or return `PostNotFound` error.
+		pub fn require_post(post_id: PostId) -> Result<Post<T>, DispatchError> {
+			Ok(Self::post_by_id(post_id).ok_or(Error::<T>::PostNotFound)?)
+		}
+}

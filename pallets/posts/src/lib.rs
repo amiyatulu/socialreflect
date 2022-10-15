@@ -108,6 +108,8 @@ pub mod pallet {
 		NoneValue,
 		/// Errors should have helpful documentation associated with them.
 		StorageOverflow,
+		PostNotFound,
+		NotEditor,
 	}
 
 	// Dispatchable functions allows users to interact with the pallet and invoke state changes.
@@ -159,10 +161,28 @@ pub mod pallet {
 		) -> DispatchResult {
 			let creator = ensure_signed(origin)?;
 			let new_post_id = Self::next_post_id();
-
 			let new_post: Post<T> = Post::new(new_post_id, creator.clone(), content.clone());
+			PostById::insert(new_post_id, new_post);
+			NextPostId::<T>::mutate(|n| {
+                *n += 1;
+            });
+			Self::deposit_event(Event::PostCreated { account: creator, post_id: new_post_id });
 			Ok(())
 
+		}
+
+		#[pallet::weight(10_000)]
+		pub fn update_post (
+			origin: OriginFor<T>,
+			post_id: PostId,
+			update: Vec<u8>,
+		) -> DispatchResult {
+             let editor = ensure_signed(origin)?;
+			 let mut post = Self::require_post(post_id)?;
+			 ensure!(editor == post.owner, Error::<T>::NotEditor);
+			 post.content = update;
+			 PostById::insert(post_id, post);
+			Ok(())
 		}
 	}
 }

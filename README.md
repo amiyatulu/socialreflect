@@ -4,7 +4,7 @@ Noise free social media with decentralized governance
 
 
 Technical Details
-https://github.com/amiyatulu/shivarthu/blob/main/docs/SocialReflect.md
+https://github.com/amiyatulu/socialreflect/blob/main/docs/SocialReflect.md
 
 # Substrate Node Template
 

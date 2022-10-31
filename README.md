@@ -6,6 +6,9 @@ Noise free social media with decentralized governance
 Technical Details
 https://github.com/amiyatulu/socialreflect/blob/main/docs/SocialReflect.md
 
+Frontend
+https://github.com/amiyatulu/socialreflect_frontend
+
 # Substrate Node Template
 
 [![Try on playground](https://img.shields.io/badge/Playground-Node_Template-brightgreen?logo=Parity%20Substrate)](https://playground.substrate.dev/?deploy=node-template) [![Matrix](https://img.shields.io/matrix/substrate-technical:matrix.org)](https://matrix.to/#/#substrate-technical:matrix.org)

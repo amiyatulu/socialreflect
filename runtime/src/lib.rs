@@ -46,6 +46,7 @@ pub use profile_validation;
 pub use schelling_game_shared;
 pub use project_submission;
 pub use sortition_sum_game;
+pub use posts;
 
 /// An index to a block.
 pub type BlockNumber = u32;
@@ -310,6 +311,10 @@ impl profile_validation::Config for Runtime {
 	type SchellingGameSharedSource = SchellingGameShared;
 }
 
+impl posts::Config for Runtime {
+	type Event = Event;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -331,6 +336,7 @@ construct_runtime!(
 		ProjectSubmission: project_submission,
 		SchellingGameShared: schelling_game_shared,
 		ProfileValidation: profile_validation,
+		Posts: posts,
 
 	}
 );

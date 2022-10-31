@@ -56,6 +56,7 @@ project-submission = {default-features=false, path="../pallets/project-submissio
 schelling-game-shared = {default-features=false, path="../pallets/schelling-game-shared"}
 profile-validation = {default-features=false, path="../pallets/profile-validation"}
 profile-validation-runtime-api = {default-features=false, path="../pallets/profile-validation/profile-validation-runtime-api"}
+posts = {default-features=false, path="../pallets/posts"}
 
 [build-dependencies]
 substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.18" }
@@ -93,7 +94,8 @@ std = [
 	"project-submission/std",
 	"schelling-game-shared/std",
 	"profile-validation/std",
-	"profile-validation-runtime-api/std"
+	"profile-validation-runtime-api/std",
+	"posts/std",
 
 ]
 runtime-benchmarks = [

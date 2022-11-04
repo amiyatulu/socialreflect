@@ -78,6 +78,11 @@ calculate_new_mean(items3)
 ### Selection of moderators
 Each account gets a quality score from 1-10, using the score schelling game. This acts as a weight for seq-phragmen approval voting election. The multi-winner representatives now become moderators for social reflect. They will be in the charge of removing posts that don't meet the guidelines of social reflect. 
 
+### Vouching
+A family tree is constructed.
+If they know each other, friends and relatives will become guarantors for each other.
+Moderators chosen through approval voting have the ability to invalidate the fake vouching by down voting the guarantor.
+
 ### Incentive system for posts
 There are two types of posts. The first type is you post your original thoughts or original blog links. The second type is sharing others' blog links, posts, or news articles. Both types of posts will earn incentives or cryptocurrency every month based upon your post quality, decided by score schelling game. But the original post will get more incentives than the post written by others.  
 
